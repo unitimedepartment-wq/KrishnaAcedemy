@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Krishna’s Music Academy - Special Training for Every Art Lover</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        
+        /* Custom Colors from User Request */
+        :root {
+            --color-primary: #1E3D8F; 
+            --color-accent: #A44DD8; 
+            --color-secondary: #FFD74F; 
+            --color-background: #F8F9FF;
+            --color-text: #222222;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--color-background);
+            color: var(--color-text);
+        }
+        
+        /* Utility Classes for Custom Colors */
+        .text-primary { color: var(--color-primary); }
+        .bg-primary { background-color: var(--color-primary); }
+        .text-accent { color: var(--color-accent); }
+        .bg-accent-gradient { background: linear-gradient(90deg, #A44DD8, #D8A4DD); } /* Violet-Pink Gradient */
+        .text-secondary { color: var(--color-secondary); }
+        .bg-secondary { background-color: var(--color-secondary); }
+        .border-accent { border-color: var(--color-accent); }
+
+        /* Custom ribbon badge styling for the certification */
+        .ribbon {
+            position: relative;
+            background: var(--color-secondary); 
+            color: var(--color-primary);
+            padding: 0.5rem 1.5rem;
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 80%, 0 100%);
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Hero Background - A subtle, light, professional image mock */
+        .hero-bg {
+            background-image: url('https://placehold.co/1200x600/f0f2f5/1E3D8F?text=Musical+Artistry+in+Progress');
+            background-size: cover;
+            background-position: center;
+            height: 70vh;
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        .hero-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.8); /* Light Overlay for better text readability */
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- 
+        ====================================================
+        1. Navigation Bar (Sticky)
+        ==================================================== 
+    -->
+    <header class="sticky top-0 z-50 bg-primary shadow-xl">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-extrabold text-white flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-music-4 mr-2 text-secondary"><path d="M11 17a1 1 0 1 0 0 2 1 1 0 0 0 0-2Z"/><path d="M12 17v-8l9-4"/><path d="M12 10.5V17"/><path d="M21 3v10"/><path d="M11 3v14"/></svg>
+                Krishna's Music Academy
+            </a>
+            <nav class="hidden md:flex space-x-8 text-white font-medium">
+                <a href="#home" class="hover:text-secondary transition duration-300">Home</a>
+                <a href="#courses" class="hover:text-secondary transition duration-300">Courses</a>
+                <a href="#about" class="hover:text-secondary transition duration-300">About Us</a>
+                <a href="#gallery" class="hover:text-secondary transition duration-300">Gallery</a>
+                <a href="#inquiry" class="py-2 px-5 rounded-full bg-secondary text-primary font-bold hover:bg-[#FFC900] transition duration-300 shadow-md">Book Demo</a>
+            </nav>
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-button" class="md:hidden text-white focus:outline-none">
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+            </button>
+        </div>
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="md:hidden hidden">
+            <nav class="flex flex-col space-y-2 p-4 bg-primary border-t border-blue-700">
+                <a href="#home" class="block py-2 text-white hover:text-secondary">Home</a>
+                <a href="#courses" class="block py-2 text-white hover:text-secondary">Courses</a>
+                <a href="#about" class="block py-2 text-white hover:text-secondary">About Us</a>
+                <a href="#gallery" class="block py-2 text-white hover:text-secondary">Gallery</a>
+                <a href="#inquiry" class="block py-2 text-secondary font-bold border-t border-blue-700 mt-2 pt-2">Join Now</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- 
+            ====================================================
+            1. Hero Banner – First Impression
+            ==================================================== 
+        -->
+        <section id="home" class="hero-bg mb-16">
+            <div class="relative z-10 text-center p-6 bg-white/80 rounded-2xl shadow-2xl max-w-5xl mx-auto m-4 border border-primary/20">
+                <h1 class="text-4xl sm:text-7xl font-extrabold mb-4 leading-snug text-primary">
+                    Special <span class="text-accent">Training</span> for Every Art Lover 🎼
+                </h1>
+                <p class="text-lg sm:text-2xl font-light text-gray-600 mb-8 max-w-3xl mx-auto">
+                    Government-recognized and certified courses — from beginner to advanced level. Find your rhythm with us.
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-8">
+                    <a href="#inquiry" class="bg-primary hover:bg-blue-700 text-white font-bold py-4 px-10 rounded-full shadow-xl transition duration-300 transform hover:scale-105 text-lg">
+                        Book Free Demo Class
+                    </a>
+                    <a href="https://wa.me/918140928868" target="_blank" class="text-primary border-2 border-primary hover:bg-primary hover:text-white font-semibold py-4 px-10 rounded-full transition duration-300 transform hover:scale-105 text-lg">
+                        WhatsApp Now
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 
+            ====================================================
+            Ribbon Badge & Trust Building
+            ==================================================== 
+        -->
+        <div class="flex justify-center -mt-10 mb-20 z-20 relative">
+            <div class="ribbon shadow-2xl">
+                🏅 GOVERNMENT CERTIFIED MUSIC ACADEMY
+            </div>
+        </div>
+
+        <!-- 
+            ====================================================
+            2. Courses We Offer
+            ==================================================== 
+        -->
+        <section id="courses" class="container mx-auto px-4 py-16">
+            <h2 class="text-5xl font-extrabold text-center mb-16 text-primary">Our Signature Courses</h2>
+            
+            <div class="grid md:grid-cols-2 gap-10 max-w-6xl mx-auto">
+                
+                <!-- Vocal Courses Card -->
+                <div class="bg-white p-8 rounded-3xl shadow-xl border-t-4 border-accent hover:shadow-primary/20 transition duration-500 transform hover:scale-[1.02]">
+                    <div class="flex items-center space-x-4 mb-8">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mic text-accent"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" x2="12" y1="19" y2="22"/></svg>
+                        <h3 class="text-4xl font-bold text-primary">🎤 VOCAL TRAINING</h3>
+                    </div>
+                    
+                    <ul class="space-y-4 text-xl text-gray-700 mb-10 list-none">
+                        <li class="flex items-start"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right mt-1 mr-2 text-secondary"><path d="m9 18 6-6-6-6"/></svg>Classical Singing (Shastriya Gayan)</li>
+                        <li class="flex items-start"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right mt-1 mr-2 text-secondary"><path d="m9 18 6-6-6-6"/></svg>Light Music & Film Songs</li>
+                        <li class="flex items-start"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right mt-1 mr-2 text-secondary"><path d="m9 18 6-6-6-6"/></svg>Ghazal / Bhajan</li>
+                        <li class="flex items-start"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right mt-1 mr-2 text-secondary"><path d="m9 18 6-6-6-6"/></svg>Karaoke Singing Techniques</li>
+                    </ul>
+                    
+                    <button onclick="document.getElementById('inquiry-course').value='Vocal'; document.getElementById('inquiry').scrollIntoView({ behavior: 'smooth' });" class="w-full py-4 rounded-xl bg-primary text-white font-bold hover:bg-blue-700 transition duration-300 text-lg shadow-md">
+                        Know More & Apply
+                    </button>
+                </div>
+
+                <!-- Instrumental Courses Card -->
+                <div class="bg-white p-8 rounded-3xl shadow-xl border-t-4 border-accent hover:shadow-primary/20 transition duration-500 transform hover:scale-[1.02]">
+                    <div class="flex items-center space-x-4 mb-8">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-drum-kit text-accent"><path d="m14.5 10c.8-.8 1.3-1.6 1.5-2.5"/><path d="m17.44 14.8-3.9-3.9"/><path d="m5.5 12.5c-.5 2.1-.2 4.1 1.4 5.7.9.9 2 1.4 3.2 1.4s2.4-.5 3.2-1.4c1.6-1.6 1.9-3.6 1.4-5.7"/><path d="M12 22a7 7 0 0 0 7-7c0-2-1-4-2-5l-4-4-5 4c-1 1-2 3-2 5a7 7 0 0 0 7 7z"/><path d="m15 15-.7-.7"/><path d="m19 19-1-1"/><path d="m14 2c2.2 0 4 1.8 4 4v.5"/><path d="M17 19h4"/><path d="M3 19h4"/></svg>
+                        <h3 class="text-4xl font-bold text-primary">🎹 INSTRUMENTAL</h3>
+                    </div>
+                    
+                    <ul class="space-y-4 text-xl text-gray-700 mb-10 list-none">
+                        <li class="flex items-start"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right mt-1 mr-2 text-secondary"><path d="m9 18 6-6-6-6"/></svg>Harmonium</li>
+                        <li class="flex items-start"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right mt-1 mr-2 text-secondary"><path d="m9 18 6-6-6-6"/></svg>Keyboard / Piano</li>
+                        <li class="flex items-start"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right mt-1 mr-2 text-secondary"><path d="m9 18 6-6-6-6"/></svg>Guitar (Acoustic/Electric)</li>
+                        <li class="flex items-start"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right mt-1 mr-2 text-secondary"><path d="m9 18 6-6-6-6"/></svg>Tabla / Percussion</li>
+                    </ul>
+                    
+                    <button onclick="document.getElementById('inquiry-course').value='Instrumental'; document.getElementById('inquiry').scrollIntoView({ behavior: 'smooth' });" class="w-full py-4 rounded-xl bg-primary text-white font-bold hover:bg-blue-700 transition duration-300 text-lg shadow-md">
+                        Know More & Apply
+                    </button>
+                </div>
+            </div>
+            <div class="text-center mt-16">
+                <a href="#inquiry" class="text-2xl font-bold text-red-600 border-b-2 border-red-600 hover:text-accent transition duration-300 pb-1">Limited Admissions – Enroll Today!</a>
+            </div>
+        </section>
+
+        <!-- 
+            ====================================================
+            3. About The Academy & Timings
+            ==================================================== 
+        -->
+        <section id="about" class="container mx-auto px-4 py-16">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <!-- About Section -->
+                <div>
+                    <h2 class="text-5xl font-extrabold mb-8 text-primary">Meet Our Founder</h2>
+                    <p class="text-xl text-gray-700 mb-6 border-l-4 border-accent pl-4 italic font-medium">
+                        "With 10+ years of teaching experience, we help every art lover find their rhythm. Our mission is to transform passion into professional skill."
+                    </p>
+                    <p class="text-lg text-gray-600 mb-8">
+                        Krishna’s Music Academy is led by **Krishna Barot Sir**, a highly experienced and certified music educator. We provide structured, government-recognized training and personalized guidance, ensuring every student achieves musical mastery in a supportive environment.
+                    </p>
+                    <div class="flex items-center space-x-4 text-xl font-bold text-primary">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-users text-secondary"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                        <span>Experienced Teachers & Proper Guidance Provided</span>
+                    </div>
+                </div>
+
+                <!-- Image / Timings Section -->
+                <div class="relative bg-white p-8 rounded-3xl shadow-xl border-2 border-primary/20">
+                    <img src="/image.png" alt="Krishna Sir with Students" class="w-full h-auto rounded-xl object-cover mb-6 shadow-md border-2 border-gray-100">
+                    <h3 class="text-3xl font-bold mb-4 text-accent">Class Timings (Mon - Fri)</h3>
+                    
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between p-4 bg-gray-100 rounded-xl shadow-inner border-l-4 border-secondary">
+                            <span class="text-xl font-semibold text-gray-700">🕖 Morning Batch</span>
+                            <span class="text-xl font-bold text-primary">07:00 A.M. to 09:00 A.M.</span>
+                        </div>
+                        <div class="flex items-center justify-between p-4 bg-gray-100 rounded-xl shadow-inner border-l-4 border-secondary">
+                            <span class="text-xl font-semibold text-gray-700">🌇 Evening Batch</span>
+                            <span class="text-xl font-bold text-primary">07:00 P.M. to 09:00 P.M.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 
+            ====================================================
+            4. Student Reviews / Testimonials (Dynamic Carousel Mock)
+            ==================================================== 
+        -->
+        <section class="bg-[#F0F2F5] py-16 mt-16">
+            <div class="container mx-auto px-4">
+                <h2 class="text-5xl font-extrabold text-center mb-16 text-primary">Student Success Stories</h2>
+                
+                <!-- Testimonial Carousel Container -->
+                <div id="testimonial-carousel" class="relative max-w-5xl mx-auto overflow-hidden bg-white p-10 rounded-3xl shadow-xl border border-accent/30">
+                    <div id="testimonial-track" class="flex transition-transform duration-500 ease-in-out">
+                        <!-- Testimonial Item 1 -->
+                        <div class="flex-none w-full p-6 text-center">
+                            <img src="https://placehold.co/100x100/A44DD8/ffffff?text=S1" alt="Student 1" class="w-24 h-24 rounded-full mx-auto mb-6 object-cover ring-4 ring-secondary">
+                            <div class="text-secondary text-3xl mb-4">⭐⭐⭐⭐⭐</div>
+                            <p class="text-xl italic text-gray-800 mb-6">"The training environment is fantastic! Krishna Sir’s personalized guidance helped me master the Keyboard faster than I expected. The certified course structure is very professional."</p>
+                            <p class="font-bold text-primary text-lg">- Rohan P., Keyboard Student</p>
+                        </div>
+                        <!-- Testimonial Item 2 -->
+                        <div class="flex-none w-full p-6 text-center">
+                            <img src="https://placehold.co/100x100/A44DD8/ffffff?text=S2" alt="Student 2" class="w-24 h-24 rounded-full mx-auto mb-6 object-cover ring-4 ring-secondary">
+                            <div class="text-secondary text-3xl mb-4">⭐⭐⭐⭐⭐</div>
+                            <p class="text-xl italic text-gray-800 mb-6">"I joined for Classical Singing and the foundation provided is incredibly strong. Every class is engaging and the focus on proper technique is superb. Best academy in the area!"</p>
+                            <p class="font-bold text-primary text-lg">- Priya M., Vocal Student</p>
+                        </div>
+                        <!-- Testimonial Item 3 -->
+                        <div class="flex-none w-full p-6 text-center">
+                            <img src="https://placehold.co/100x100/A44DD8/ffffff?text=S3" alt="Student 3" class="w-24 h-24 rounded-full mx-auto mb-6 object-cover ring-4 ring-secondary">
+                            <div class="text-secondary text-3xl mb-4">⭐⭐⭐⭐⭐</div>
+                            <p class="text-xl italic text-gray-800 mb-6">"The Harmonium coaching is top-notch. Sir’s patience and ability to simplify complex Ragas make learning a joy. Highly recommended for all serious music lovers."</p>
+                            <p class="font-bold text-primary text-lg">- Amit J., Harmonium Student</p>
+                        </div>
+                    </div>
+
+                    <!-- Carousel Controls -->
+                    <button onclick="moveTestimonial(-1)" class="absolute top-1/2 left-0 transform -translate-y-1/2 p-3 bg-primary/20 hover:bg-primary/40 rounded-r-full text-primary z-30 transition duration-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-left"><path d="m15 18-6-6 6-6"/></svg>
+                    </button>
+                    <button onclick="moveTestimonial(1)" class="absolute top-1/2 right-0 transform -translate-y-1/2 p-3 bg-primary/20 hover:bg-primary/40 rounded-l-full text-primary z-30 transition duration-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right"><path d="m9 18 6-6-6-6"/></svg>
+                    </button>
+                </div>
+                
+                <div class="text-center mt-10">
+                    <p class="text-lg text-gray-500">Share your experience via our QR-based feedback system (Future Upgrade)</p>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- 
+            ====================================================
+            5. Gallery / Events Page & Reels Section (Mockup)
+            ==================================================== 
+        -->
+        <section id="gallery" class="container mx-auto px-4 py-16">
+            <h2 class="text-5xl font-extrabold text-center mb-16 text-primary">📸 Our Performances & Events</h2>
+            <p class="text-center text-gray-600 text-lg mb-10">Watch our students shine! (Social media feed auto-updates here)</p>
+            
+            <!-- Filter Buttons -->
+            <div class="flex flex-wrap justify-center space-x-3 mb-10">
+                <button class="filter-btn py-2 px-6 rounded-full bg-primary text-white font-bold hover:bg-blue-700 transition duration-300 mb-2" data-filter="all">All</button>
+                <button class="filter-btn py-2 px-6 rounded-full bg-gray-200 text-gray-700 font-medium hover:bg-primary/10 hover:text-primary transition duration-300 mb-2" data-filter="instrument">🎹 Instruments</button>
+                <button class="filter-btn py-2 px-6 rounded-full bg-gray-200 text-gray-700 font-medium hover:bg-primary/10 hover:text-primary transition duration-300 mb-2" data-filter="vocal">🎤 Vocal</button>
+                <button class="filter-btn py-2 px-6 rounded-full bg-gray-200 text-gray-700 font-medium hover:bg-primary/10 hover:text-primary transition duration-300 mb-2" data-filter="ceremony">🎓 Ceremony</button>
+            </div>
+
+            <!-- Gallery Grid (Simulating Reels/Photos) -->
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 max-w-7xl mx-auto" id="gallery-grid">
+                <!-- Mock Reel/Photo Items -->
+                <div class="gallery-item aspect-w-9 aspect-h-16 rounded-xl overflow-hidden shadow-md border-2 border-gray-100 hover:border-accent transition duration-500 group cursor-pointer" data-category="vocal">
+<video controls autoplay muted loop
+  src="/WhatsApp Video 2025-11-07 at 13.46.03_0790e0b9.mp4" alt="Vocal Performance"
+  class="w-full h-full object-cover rounded-xl shadow-lg">
+</video>                </div>
+                <div class="gallery-item aspect-w-9 aspect-h-16 rounded-xl overflow-hidden shadow-md border-2 border-gray-100 hover:border-accent transition duration-500 group cursor-pointer" data-category="instrument">
+                    <img src="/WhatsApp Image 2025-11-07 at 13.31.33_cb4502e0.jpg" alt="Guitar Class" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                </div>
+                <div class="gallery-item aspect-w-9 aspect-h-16 rounded-xl overflow-hidden shadow-md border-2 border-gray-100 hover:border-accent transition duration-500 group cursor-pointer" data-category="ceremony">
+                    <img src="/WhatsApp Image 2025-11-07 at 13.51.38_310387ba.jpg" alt="Award Ceremony" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                </div>
+                <div class="gallery-item aspect-w-9 aspect-h-16 rounded-xl overflow-hidden shadow-md border-2 border-gray-100 hover:border-accent transition duration-500 group cursor-pointer" data-category="instrument">
+                    <img src="/WhatsApp Image 2025-11-07 at 13.27.35_56fc2da9.jpg" alt="Tabla Practice" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                </div>
+                <div class="gallery-item aspect-w-9 aspect-h-16 rounded-xl overflow-hidden shadow-md border-2 border-gray-100 hover:border-accent transition duration-500 group cursor-pointer" data-category="vocal">
+                    <img src="/WhatsApp Image 2025-11-07 at 13.33.20_8ca1ad63.jpg" alt="Light Music" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="#" target="_blank" class="py-3 px-8 rounded-full bg-gray-200 text-primary font-bold hover:bg-primary hover:text-white transition duration-300 text-lg shadow-md flex items-center justify-center space-x-2 max-w-xs mx-auto">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-instagram"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.01 7.37 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.5" y1="6.5" y2="6.5"/></svg>
+                    <span>View More on Instagram</span>
+                </a>
+            </div>
+        </section>
+
+
+        <!-- 
+            ====================================================
+            6. Inquiry Form (Automated Leads)
+            ==================================================== 
+        -->
+        <section id="inquiry" class="container mx-auto px-4 py-16 bg-[#F0F2F5] rounded-t-3xl border-t border-gray-200">
+            <div class="max-w-xl mx-auto bg-white p-8 md:p-12 rounded-3xl shadow-2xl border-2 border-accent/50">
+                <h2 class="text-4xl font-extrabold text-center mb-3 text-primary">Secure Your Free Demo Class</h2>
+                <p class="text-center text-gray-600 text-lg mb-10">Fill the form below and receive an instant notification on WhatsApp!</p>
+                
+                <form id="inquiry-form" class="space-y-6">
+                    <div>
+                        <label for="inquiry-name" class="block text-base font-semibold text-primary mb-1">🔸 Full Name</label>
+                        <input type="text" id="inquiry-name" name="name" required class="w-full p-4 rounded-xl bg-gray-100 border border-gray-300 focus:ring-accent focus:border-accent text-gray-800 placeholder-gray-500 shadow-inner">
+                    </div>
+                    
+                    <div>
+                        <label for="inquiry-phone" class="block text-base font-semibold text-primary mb-1">🔸 Phone Number (WhatsApp preferred)</label>
+                        <input type="tel" id="inquiry-phone" name="phone" required pattern="[0-9]{10,15}" title="Enter a valid phone number" class="w-full p-4 rounded-xl bg-gray-100 border border-gray-300 focus:ring-accent focus:border-accent text-gray-800 placeholder-gray-500 shadow-inner">
+                    </div>
+                    
+                    <div>
+                        <label for="inquiry-course" class="block text-base font-semibold text-primary mb-1">🔸 Course Interested In</label>
+                        <select id="inquiry-course" name="course" required class="w-full p-4 rounded-xl bg-gray-100 border border-gray-300 focus:ring-accent focus:border-accent text-gray-800 appearance-none cursor-pointer">
+                            <option value="" disabled selected>Select a Course</option>
+                            <optgroup label="Vocal Training">
+                                <option value="Classical Singing">Classical Singing</option>
+                                <option value="Light Music/Film Songs">Light Music / Film Songs</option>
+                                <option value="Ghazal / Bhajan">Ghazal / Bhajan</option>
+                            </optgroup>
+                            <optgroup label="Instrumental Training">
+                                <option value="Harmonium">Harmonium</option>
+                                <option value="Keyboard/Piano">Keyboard / Piano</option>
+                                <option value="Guitar">Guitar</option>
+                                <option value="Tabla/Percussion">Tabla / Percussion</option>
+                            </optgroup>
+                            <option value="General Inquiry">General Inquiry</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="inquiry-time" class="block text-base font-semibold text-primary mb-1">🔸 Preferred Time Slot</label>
+                        <select id="inquiry-time" name="time" required class="w-full p-4 rounded-xl bg-gray-100 border border-gray-300 focus:ring-accent focus:border-accent text-gray-800 appearance-none cursor-pointer">
+                            <option value="" disabled selected>Select Preferred Time</option>
+                            <option value="Morning (7-9 AM)">Morning (7-9 AM)</option>
+                            <option value="Evening (7-9 PM)">Evening (7-9 PM)</option>
+                            <option value="Flexible">Flexible / Discuss Later</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="inquiry-message" class="block text-base font-semibold text-primary mb-1">🔸 Your Message (Optional)</label>
+                        <textarea id="inquiry-message" name="message" rows="3" class="w-full p-4 rounded-xl bg-gray-100 border border-gray-300 focus:ring-accent focus:border-accent text-gray-800 placeholder-gray-500 shadow-inner" placeholder="E.g., I have 6 months experience in guitar..."></textarea>
+                    </div>
+
+                    <button type="submit" class="w-full py-4 bg-primary hover:bg-blue-700 text-white font-bold rounded-xl shadow-xl transition duration-300 transform hover:scale-[1.01] text-lg">
+                        Book Demo & Send Inquiry
+                    </button>
+                    <div id="form-message" class="mt-4 text-center hidden p-4 rounded-xl text-lg font-semibold border-2"></div>
+                </form>
+            </div>
+        </section>
+
+        <!-- 
+            ====================================================
+            7. Extra Add-ons (Quick Links for Growth)
+            ==================================================== 
+        -->
+        <section class="container mx-auto px-4 py-16">
+            <h2 class="text-4xl font-bold text-center mb-12 text-primary">Growth Add-ons</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto text-center">
+                <div class="p-6 bg-white rounded-xl shadow-lg border border-gray-100 hover:border-primary transition duration-300">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-banknote mx-auto mb-3 text-secondary"><rect width="20" height="12" x="2" y="6" rx="2"/><circle cx="12" cy="12" r="2"/><path d="M6 12h.01M18 12h.01"/></svg>
+                    <p class="font-semibold text-gray-800">Online Fee Payment (GPay/Paytm)</p>
+                </div>
+                <div class="p-6 bg-white rounded-xl shadow-lg border border-gray-100 hover:border-primary transition duration-300">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-calendar-check mx-auto mb-3 text-secondary"><path d="M21 14V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h8"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/><path d="m15 19 2 2 4-4"/></svg>
+                    <p class="font-semibold text-gray-800">Auto Reminder System (Demo Class)</p>
+                </div>
+                <div class="p-6 bg-white rounded-xl shadow-lg border border-gray-100 hover:border-primary transition duration-300">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-text mx-auto mb-3 text-secondary"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg>
+                    <p class="font-semibold text-gray-800">Data Auto-Save (Google Sheet Mock)</p>
+                </div>
+                <div class="p-6 bg-white rounded-xl shadow-lg border border-gray-100 hover:border-primary transition duration-300">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-list-checks mx-auto mb-3 text-secondary"><path d="m3 21 2.7-2.7"/><path d="M7 13.7V17"/><path d="M7 7v.01"/><path d="M17 7v.01"/><path d="M17 13.7V17"/><path d="M12 7v.01"/><path d="M12 13.7V17"/></svg>
+                    <p class="font-semibold text-gray-800">Online Class Registration (Future Ready)</p>
+                </div>
+            </div>
+        </section>
+        
+    </main>
+
+    <!-- 
+        ====================================================
+        8. Footer Section
+        ==================================================== 
+    -->
+    <footer class="bg-primary border-t border-primary/50 mt-16 pt-12 pb-8">
+        <div class="container mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-12 text-white">
+            
+            <!-- Logo & Vision -->
+            <div class="col-span-2 md:col-span-1">
+                <a href="#" class="text-3xl font-extrabold text-secondary flex items-center mb-4">
+                    KMA
+                </a>
+                <p class="text-blue-200 text-sm">
+                    Nurturing passion into professional skill through certified music education.
+                </p>
+            </div>
+            
+            <!-- Quick Links -->
+            <div>
+                <h3 class="text-xl font-bold text-secondary mb-4">Quick Links</h3>
+                <ul class="space-y-3 text-blue-200">
+                    <li><a href="#courses" class="hover:text-white transition duration-300">Our Courses</a></li>
+                    <li><a href="#about" class="hover:text-white transition duration-300">Academy Vision</a></li>
+                    <li><a href="#gallery" class="hover:text-white transition duration-300">Events & Gallery</a></li>
+                    <li><a href="#inquiry" class="hover:text-white transition duration-300 font-bold">Free Demo Class</a></li>
+                </ul>
+            </div>
+
+            <!-- Contact Info -->
+            <div>
+                <h3 class="text-xl font-bold text-secondary mb-4">Get In Touch</h3>
+                <ul class="space-y-3 text-blue-200">
+                    <li><a href="tel:+918140928868" class="hover:text-white transition duration-300">📞 +91 81409 28868</a> (Krishna Barot Sir)</li>
+                    <li><a href="mailto:info@krishnamusicacademy.com" class="hover:text-white transition duration-300">📧 support@kma.in (Mock)</a></li>
+                </ul>
+            </div>
+            
+            <!-- Address & Map -->
+            <div class="col-span-2 md:col-span-1">
+                <h3 class="text-xl font-bold text-secondary mb-4">Visit Us</h3>
+                <p class="text-blue-200 mb-4">
+                    12, Fourth Floor, Rama Business Hub Shopping, Near Anand Hotel, Deesa–Palanpur Highway.
+                </p>
+                <a href="https://maps.app.goo.gl/YourMockMapLink" target="_blank" class="text-white font-semibold hover:text-secondary transition duration-300 flex items-center space-x-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-map-pin"><path d="M12 21.7C17.3 17 20 13 20 10a8 8 0 1 0-16 0c0 3 2.7 7 8 11.7z"/><circle cx="12" cy="10" r="3"/></svg>
+                    <span>View on Google Map</span>
+                </a>
+                <!-- Social Media -->
+                <div class="flex space-x-5 mt-6">
+                    <a href="#" target="_blank" class="text-blue-300 hover:text-white transition duration-300"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-instagram"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.01 7.37 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.5" y1="6.5" y2="6.5"/></svg></a>
+                    <a href="#" target="_blank" class="text-blue-300 hover:text-white transition duration-300"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-facebook"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+                    <a href="#" target="_blank" class="text-blue-300 hover:text-white transition duration-300"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-youtube"><path d="M2.5 17.5a4.7 4.7 0 0 1-2-1.3C.1 15.3 0 13.9 0 12c0-1.9.1-3.3.5-4.2a4.7 4.7 0 0 1 2-1.3C3.5 6 5.2 6 12 6s8.5 0 9.5.5a4.7 4.7 0 0 1 2 1.3c.4.9.5 2.3.5 4.2 0 1.9-.1 3.3-.5 4.2a4.7 4.7 0 0 1-2 1.3C20.5 18 18.8 18 12 18s-8.5 0-9.5-.5z"/><path d="m10 14.5 5-2.5-5-2.5z"/></svg></a>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="mt-16 pt-8 border-t border-blue-700 text-center text-blue-300 text-sm">
+            &copy; 2025 Krishna's Music Academy. All rights reserved.
+            <span class="block mt-1">Website Design by <a href="#" class="hover:text-secondary font-semibold">SparshTech.in</a></span>
+        </div>
+    </footer>
+
+
+    <!-- 
+        ====================================================
+        9. Smart Features (Floating Sticky Buttons)
+        ==================================================== 
+    -->
+    <div class="fixed bottom-6 right-6 z-50 flex flex-col space-y-4">
+        <!-- Call Now Sticky Button (Primary for Mobile) -->
+        <a href="tel:+918140928868" class="flex items-center justify-center w-16 h-16 bg-red-600 hover:bg-red-700 rounded-full shadow-2xl text-white transform hover:scale-110 transition duration-300 border-2 border-white" title="Call Krishna Sir Now">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-phone"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.63A2 2 0 0 1 4.09 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        </a>
+
+        <!-- WhatsApp Floating Chat (Secondary) -->
+        <a href="https://wa.me/918140928868?text=Hello%20Krishna%20Sir,%20I%20am%20interested%20in%20a%20free%20demo%20class%20from%20your%20website." target="_blank" class="flex items-center justify-center w-16 h-16 bg-green-500 hover:bg-green-600 rounded-full shadow-2xl text-white transform hover:scale-110 transition duration-300 border-2 border-white" title="Chat on WhatsApp">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-message-square"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        </a>
+    </div>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // -----------------
+        // Mobile Menu Logic
+        // -----------------
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Close mobile menu on link click
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // -----------------
+        // Testimonial Carousel Logic
+        // -----------------
+        let currentTestimonialIndex = 0;
+        const testimonialTrack = document.getElementById('testimonial-track');
+        const testimonialItems = testimonialTrack.children;
+        const totalItems = testimonialItems.length;
+
+        function moveTestimonial(direction) {
+            currentTestimonialIndex = (currentTestimonialIndex + direction + totalItems) % totalItems;
+            const offset = -currentTestimonialIndex * 100;
+            testimonialTrack.style.transform = `translateX(${offset}%)`;
+        }
+
+        // Auto-scroll the carousel every 6 seconds
+        setInterval(() => moveTestimonial(1), 6000);
+
+
+        // -----------------
+        // Inquiry Form Logic (WhatsApp Automation & GS Sheet Simulation)
+        // -----------------
+        const form = document.getElementById('inquiry-form');
+        const formMessage = document.getElementById('form-message');
+        const KRISHNA_SIR_WA_NUMBER = "918140928868"; // WhatsApp format: 91XXXXXXXXXX
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const name = document.getElementById('inquiry-name').value;
+            const phone = document.getElementById('inquiry-phone').value;
+            const course = document.getElementById('inquiry-course').value;
+            const time = document.getElementById('inquiry-time').value;
+            const message = document.getElementById('inquiry-message').value || "No specific message provided.";
+            
+            // 1. Construct the Automated WhatsApp Message for Krishna Sir
+            const waMessage = 
+                `*🚨 NEW DEMO CLASS INQUIRY! 🚨*%0A%0A` +
+                `*Name:* ${encodeURIComponent(name)}%0A` +
+                `*Phone:* ${encodeURIComponent(phone)}%0A` +
+                `*Course:* ${encodeURIComponent(course)}%0A` +
+                `*Preferred Time:* ${encodeURIComponent(time)}%0A` +
+                `*Message:* ${encodeURIComponent(message)}%0A%0A` +
+                `_Action required: Please follow up immediately to confirm the booking._`;
+
+            // WhatsApp URL Construction
+            const waUrl = `https://wa.me/${KRISHNA_SIR_WA_NUMBER}?text=${waMessage}`;
+
+            // 2. Open WhatsApp in a new tab (Instant Notification)
+            window.open(waUrl, '_blank');
+
+            // 3. Show success message
+            formMessage.classList.remove('hidden');
+            formMessage.classList.add('bg-green-100', 'border-green-500', 'text-green-800');
+            formMessage.innerHTML = `✅ **Inquiry Sent Successfully!** A direct notification has been sent to Krishna Sir on WhatsApp. Please check the new tab to complete sending the message.`;
+            
+            form.reset(); // Clear the form after submission
+            
+            // Hide message after 8 seconds
+            setTimeout(() => {
+                formMessage.classList.add('hidden');
+            }, 8000);
+        });
+
+        // -----------------
+        // Gallery Filter Logic
+        // -----------------
+        document.querySelectorAll('.filter-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                // Update active button styling
+                document.querySelectorAll('.filter-btn').forEach(btn => {
+                    // Reset to default (light gray)
+                    btn.classList.remove('bg-primary', 'text-white');
+                    btn.classList.add('bg-gray-200', 'text-gray-700');
+                });
+                // Set active button to Primary color
+                this.classList.remove('bg-gray-200', 'text-gray-700');
+                this.classList.add('bg-primary', 'text-white');
+
+                // Filter logic
+                const filter = this.getAttribute('data-filter');
+                document.querySelectorAll('.gallery-item').forEach(item => {
+                    const category = item.getAttribute('data-category');
+                    if (filter === 'all' || category === filter) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
